@@ -16,13 +16,12 @@ public class MoveSquare : MonoBehaviour
         if (rb == null) rb = GetComponent<Rigidbody2D>();
         startPosition = rb.position;
     }
-
-    private void FixedUpdate()
+    private void Update()
     {
-        rb.MovePosition(rb.position + direction * (speed * Time.fixedDeltaTime));
+        
     }
 
-    private void Update()  
+    private void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
@@ -34,5 +33,9 @@ public class MoveSquare : MonoBehaviour
 
         if (Vector2.Distance(startPosition, rb.position) > maxDistance)
         { rb.position = startPosition; }
+
+        rb.MovePosition(rb.position + direction * (speed * Time.fixedDeltaTime));
     }
+
+
 }
